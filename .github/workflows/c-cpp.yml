@@ -13,8 +13,22 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: sqlines
-      run: cd sqlines
+      env:
+        INSTALLATION_ROOT: ./
+              
+    - name: install dependencies
+      run: sudo apt-get install build-essential gcc git qt5-default qt5-qmake libpq5 libxml2 pkg-config xml2 libxml2-dev libpq-dev libqt5svg5-dev
+      
     - name: build
-      run: ./build_all64.sh
+      run: cd sqlines && sh ./build_all64.sh
+              
+    # prepare artifact
+    # - name: Prepare artifact
+    #   run: tar -cvzf ${{ github.workspace }}/sqlines ${{ github.workspace }}/pgmodeler/build/
+
+    # upload artifact
+    # - uses: actions/upload-artifact@v2-preview
+    #   with:
+    #     name: pgmodeler
+    #     path: ${{ github.workspace }}/pgmodeler-dist.tar.gz
       
