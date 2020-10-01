@@ -17,10 +17,10 @@ jobs:
         INSTALLATION_ROOT: ./
               
     - name: install dependencies
-      run: sudo apt-get install build-essential gcc git qt5-default qt5-qmake libpq5 libxml2 pkg-config xml2 libxml2-dev libpq-dev libqt5svg5-dev
+      run: sudo apt-get install build-essential gcc git qt5-default qt5-qmake
       
     - name: build
-      run: cd sqlines && sh ./build_all64.sh
+      run: cd sqlparser && sh ./build_all64.sh
               
     # prepare artifact
     # - name: Prepare artifact
